@@ -9,7 +9,7 @@ if(isset($_POST['submit'])){
     $row    = mysqli_fetch_assoc($result);
     if($row['admin_id']){
         $_SESSION['admin_id']   = $row['admin_id']; 
-        $_SESSION['admin_type'] = $row['admin_type']; 
+        $_SESSION['admin_type'] = 'admin'; 
         header("location:manage_admin.php");
     }else{
         $error =  "User Not Found";

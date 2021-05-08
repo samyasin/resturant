@@ -171,18 +171,29 @@ if(!isset($_SESSION['admin_id'])){
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">                        
-                        <?php if($_SESSION['admin_type'] != 'super'){ ?>
+                        <?php if(isset($_SESSION['admin_type']) == 'admin'){ ?>
                         <li>
                             <a href="manage_admin.php">
                                 <i class="fas fa-chart-bar"></i>Manage Admin</a>
                         </li>
-                    <?php } ?>
+                    
                         <li>
                             <a href="manage_resturant.php">
                                 <i class="fas fa-chart-bar"></i>Manage Resturant</a>
                         </li>
-                        
-                        
+                    <?php } ?>    
+                        <li>
+                            <a href="manage_tables.php">
+                                <i class="fas fa-chart-bar"></i>Manage Tables</a>
+                        </li>
+                         <li>
+                            <a href="manage_category.php">
+                                <i class="fas fa-chart-bar"></i>Manage Category</a>
+                        </li>
+                        <li>
+                            <a href="manage_items.php">
+                                <i class="fas fa-chart-bar"></i>Manage Items</a>
+                        </li>
 
                     </ul>
                 </nav>
