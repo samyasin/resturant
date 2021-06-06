@@ -8,8 +8,7 @@ $rest_id  = $_SESSION['admin_id'];
 if(isset($_POST['submit'])){
     $device_number  = $_POST['device_number'];   
     // query 
-    $query = "insert into tables(device_number,rest_id)
-              values($device_number,$rest_id)";
+    $query = "insert into tables(device_number,rest_id) values('$device_number',$rest_id)";
     mysqli_query($conn,$query);
 }
 

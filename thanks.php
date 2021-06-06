@@ -1,10 +1,15 @@
 <?php
- session_start();
+session_start();
+if(!isset($_SESSION['rest_id'])){
+    header("location:login.php");
+}
  include('admin/includes/connection.php');
- include('includes/public_header.php'); ?> 
+ include('includes/public_header.php');
 
-    <!-- start slider section -->
-    
+ ?>
+}
+
+   <div>
 <!-- about -->
 
 <!-- end about -->
@@ -16,31 +21,11 @@
       <div class="col-md-12">
         <div class="title">
           <i><img src="images/title.png" alt="#"/></i>
-          <h2>Our Items</h2>
+          <h2>Thanks for Your Order</h2>
         </div>
       </div>
     </div>
-    <div class="row">
-      <?php
-      $query ="select * from items where rest_id = {$_SESSION['rest_id']} 
-               AND cat_id = {$_GET['cat_id']}";      
-      $result = mysqli_query($conn,$query);
-      while($row  = mysqli_fetch_assoc($result)){ 
-        echo "<a href='single_item.php?item_id={$row['item_id']}'>";
-      	echo '<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mar_bottom">
-        <div class="blog_box">
-          <div class="blog_img_box">';
-       echo "<figure><img src='admin/images/item/{$row['item_image']}' width='348' height='232'/>
-            </figure>
-          </div>";	
-       echo "<div class='row'><div class='col-lg-6 col-md-6'><h3>{$row['item_name']}</h3></div>
-            <div  class='col-lg-6 col-md-6'><h3>{$row['item_price']} JD</h3></div>
-           </div></div></a></div>";
-      }?>
-      
-       
-      
-  </div>
+    
 </div>
 <!-- end blog -->
 

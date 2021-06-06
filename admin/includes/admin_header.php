@@ -194,6 +194,10 @@ if(!isset($_SESSION['admin_id'])){
                             <a href="manage_items.php">
                                 <i class="fas fa-chart-bar"></i>Manage Items</a>
                         </li>
+                        <li>
+                            <a href="manage_orders.php">
+                                <i class="fas fa-chart-bar"></i>Manage Orders</a>
+                        </li>
 
                     </ul>
                 </nav>
