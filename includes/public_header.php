@@ -76,6 +76,7 @@
                 <div class="col-md-9">
                     <div class="full">
                         <a class="logo" href="index.php"><img src="images/logo.png" alt="#" /></a>
+                        <a href="ask_for_help" class="btn btn-warning" style="margin:20px 0 0 25px; ">Ask For Help</a>
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -88,6 +89,7 @@
      }else{
      echo "0";
  } ?>
+ <a href="logout.php" class="btn btn-danger" style="margin-left: 25px;"> logout</a>
                 </div>
                
             </div>

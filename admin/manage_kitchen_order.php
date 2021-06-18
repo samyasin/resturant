@@ -1,29 +1,25 @@
 <?php
-// we will make CRUD
-// lets start with Create 
- //open connection 
 include('includes/connection.php');
+include('includes/admin_header.php');
+$rest_id = $_SESSION['admin_id'];
 
-?>
-<?php include('includes/admin_header.php'); ?>
-<div class="main-content">
-    <div class="section__content section__content--p30">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-header">Manage Orders
-                        </div>
+if(isset($_POST['submit'])){
 
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-12">
-            <!-- DATA TABLE-->
-            <div class="table-responsive m-b-40">
-                <table class="table table-borderless table-data3">
+    mysqli_query($conn,$query);
+}
+ ?>
+ 
+<!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        
+                      
+                <div class="row m-t-30">
+                            <div class="col-md-12">
+                                <!-- DATA TABLE-->
+                                <div class="table-responsive m-b-40">
+                                    <table class="table table-borderless table-data3">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -31,8 +27,7 @@ include('includes/connection.php');
                             <th>Table Number</th>
                             <th>Status</th>
                             <th>View Order</th>
-                            <th>Verify Order</th>
-                            <th>Delete Order</th>
+                            <th>Done Order</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,8 +43,7 @@ include('includes/connection.php');
                         echo "<td>{$row['table_id']}</td>";
                         echo "<td>{$row['order_status']}</td>";
                         echo "<td><a href='view_order.php?order_id={$row['order_id']}' class='btn btn-warning'>View</a></td>";
-                        echo "<td><a href='verify_order.php?order_id={$row['order_id']}' class='btn btn-success'>Verify</a></td>";
-                        echo "<td><a href='delete_order.php?order_id={$row['order_id']}' class='btn btn-danger'>Delete</a></td>";
+                        echo "<td><a href='done_order.php?order_id={$row['order_id']}' class='btn btn-success'>Done</a></td>";
                         echo "</tr>";
                         $i++;
                     }
@@ -57,10 +51,12 @@ include('includes/connection.php');
                     ?>  
                 </tbody>
             </table>
-        </div>
-        <!-- END DATA TABLE-->
-    </div>
-</div>
-</div>
+                                </div>
+                                <!-- END DATA TABLE-->
+                            </div>
+                        </div>
+                          </div>
+                    </div>
+                </div>
 
-<?php include('includes/admin_footer.php'); ?>
+<?php include('includes/admin_footer.php') ?>

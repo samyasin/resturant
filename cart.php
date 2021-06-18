@@ -4,8 +4,8 @@ include('admin/includes/connection.php');
 
 if(isset($_POST['submit'])){
   $date = date("Y-m-d");
-  $query = "insert into orders(order_date,rest_id) 
-            values('$date',{$_SESSION['rest_id']})";
+  $query = "insert into orders(order_date,rest_id, table_id) 
+            values('$date',{$_SESSION['rest_id']}, {$_SESSION['table_number']})";
   mysqli_query($conn, $query);          
   $last_id = mysqli_insert_id($conn);
 
@@ -13,6 +13,7 @@ if(isset($_POST['submit'])){
     $query = "insert into order_details(order_id,item_id,qty)
             values($last_id,{$value['item_id']},{$value['qty']})";  
     mysqli_query($conn,$query);
+    unset($_SESSION['items']);
     header("location:thanks.php");
  }  
 }
@@ -47,12 +48,14 @@ include('includes/public_header.php');
               <th scope="col">Item Price </th>
               <th scope="col">Qty</th>
               <th scope="col">Total</th>
+              <th scope="col">Delete</th>
             </tr>
           </thead>
           <tbody>
            
         <?php
         $x = 1;
+        $sub_total = 0;
         foreach ($_SESSION['items'] as  $value) {
           $query ="select * from items where item_id = {$value['item_id']}";
           $result = mysqli_query($conn,$query);
@@ -66,10 +69,41 @@ include('includes/public_header.php');
             echo "<td>{$value['qty']}</td>";
             $total = $row['item_price']*$value['qty'];
             echo "<td>{$total}</td>";
-            echo '<tr>';
+            echo "<td><a href='delete_from_cart.php?item_id={$value['item_id']}' class='btn btn-danger'>Delete</a></td>";
+            echo '<tr>';            
             $x++;
+            $item_total = $row['item_price'] * $value['qty'];
+            $sub_total+=$item_total;
           }  
         }
+        echo "<tr>";
+        echo "<th>Tax(0.16): </th>";
+        echo "<td> </td>";
+        echo "<td> </td>";
+        echo "<td> </td>";
+        echo "<td> </td>";
+        echo "<td> </td>";
+        echo "<th>".$sub_total*0.16 ."</th>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<th>sub Total: </th>";
+        echo "<td> </td>";
+        echo "<td> </td>";
+        echo "<td> </td>";
+        echo "<td> </td>";
+        echo "<td> </td>";
+        echo "<th>$sub_total </th>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<th>Total: </th>";
+        echo "<td> </td>";
+        echo "<td> </td>";
+        echo "<td> </td>";
+        echo "<td> </td>";
+        echo "<td> </td>";
+        $net = $sub_total + ($sub_total*0.16);
+        echo "<th>$net </th>";
+        echo "</tr>";
         ?>
         </tbody>
         </table>

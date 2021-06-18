@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2021 at 09:05 AM
+-- Generation Time: Jun 18, 2021 at 09:17 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -41,6 +41,20 @@ CREATE TABLE `admin` (
 INSERT INTO `admin` (`admin_id`, `admin_email`, `admin_password`, `admin_fullname`) VALUES
 (1, 'salameh@gmail.com', '123456', 'salameh yaseeeeen'),
 (2, 'abood@gmail.com', '123456789', 'Abdelrahman');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ask_help`
+--
+
+CREATE TABLE `ask_help` (
+  `help_id` int(3) NOT NULL,
+  `rest_id` int(3) NOT NULL,
+  `table_id` int(3) NOT NULL,
+  `status` varchar(50) NOT NULL DEFAULT 'Pending',
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -86,7 +100,7 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`item_id`, `item_name`, `item_price`, `item_desc`, `item_image`, `cat_id`, `rest_id`) VALUES
-(2, 'Orange Juice ', '2.5', 'Fresh Orange Juice', 'pexels-jeshoots-3642-1.jpg', 1, 2),
+(2, 'Orange Juice ', '2.5', 'Fresh Orange Juice', 'pexels-jeshoots-3642-1.jpg', 5, 2),
 (3, 'Chicken Brest', '5.5', 'fresh chicken brest with rice and ', 'chicken brest.jpg', 4, 2);
 
 -- --------------------------------------------------------
@@ -108,12 +122,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `order_date`, `rest_id`, `table_id`, `order_status`) VALUES
-(1, '0000-00-00', 2, 1, 'pending'),
-(2, '0000-00-00', 2, 1, 'pending'),
-(3, '0000-00-00', 2, 1, 'pending'),
-(4, '2021-06-06', 2, 1, 'pending'),
-(5, '2021-06-06', 2, 1, 'pending'),
-(6, '2021-06-06', 2, 1, 'done');
+(10, '2021-06-18', 2, 2, 'Done');
 
 -- --------------------------------------------------------
 
@@ -134,9 +143,7 @@ CREATE TABLE `order_details` (
 --
 
 INSERT INTO `order_details` (`order_details_id`, `order_id`, `item_id`, `qty`, `total`) VALUES
-(1, 3, 3, 6, '0'),
-(2, 6, 3, 4, '0'),
-(3, 6, 3, 6, '0');
+(7, 10, 3, 2, '0');
 
 -- --------------------------------------------------------
 
@@ -193,6 +200,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
 
 --
+-- Indexes for table `ask_help`
+--
+ALTER TABLE `ask_help`
+  ADD PRIMARY KEY (`help_id`);
+
+--
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -239,6 +252,12 @@ ALTER TABLE `admin`
   MODIFY `admin_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `ask_help`
+--
+ALTER TABLE `ask_help`
+  MODIFY `help_id` int(3) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
@@ -254,13 +273,13 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `order_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `order_details_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `order_details_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `resturants`

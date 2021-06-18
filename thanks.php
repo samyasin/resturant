@@ -21,7 +21,7 @@ if(!isset($_SESSION['rest_id'])){
       <div class="col-md-12">
         <div class="title">
           <i><img src="images/title.png" alt="#"/></i>
-          <h2>Thanks for Your Order</h2>
+          <h2>Preperaing Your Order Now </h2>
         </div>
       </div>
     </div>

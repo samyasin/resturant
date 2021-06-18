@@ -32,6 +32,7 @@ include('includes/connection.php');
                             <th>Qty</th>
                             <th>Price</th>
                             <th>Total</th>
+                            <th>Edit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,6 +43,7 @@ include('includes/connection.php');
                                 where order_id = {$_GET['order_id']}";
                                // echo $query;
                       $x = 1;
+                      $sub_total = 0;
                       $result = mysqli_query($conn,$query);
                       while($row = mysqli_fetch_assoc($result)){
                         echo "<tr>";
@@ -53,11 +55,35 @@ include('includes/connection.php');
                         echo "<td>{$row['item_price']}</td>";
                         $total = $row['qty'] * $row['item_price'];      
                         echo "<td>{$total}</td>";
+                        echo "<td><a href='delete_details.php?order_details_id={$row['order_details_id']}&order_id={$_GET['order_id']}' class='btn btn-danger'>Delete</a></td>";                        
                         echo "</tr>";
                         $x++;
+                        $sub_total+= $total;
                     }
 
-                    ?>  
+                    ?>
+                    <tr>
+                        <td>Tax (0.16) : </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <?php echo $sub_total ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Total: </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <?php echo $sub_total + ($sub_total * 0.16); ?>
+                        </td>
+                    </tr>  
                 </tbody>
             </table>
         </div>

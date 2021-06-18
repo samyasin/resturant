@@ -8,6 +8,9 @@ if(isset($_POST['submit'])){
     $result = mysqli_query($conn,$query); 
     $row    = mysqli_fetch_assoc($result);
     if($row['rest_id']){
+        if(isset($_POST['kitchen'])){
+            $_SESSION['kitchen']   = 1;              
+        }
         $_SESSION['admin_id']   = $row['rest_id'];          
         header("location:manage_tables.php");
     }else{
@@ -75,6 +78,10 @@ if(isset($_POST['submit'])){
                                 <div class="form-group">
                                     <label>Password</label>
                                     <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
+                                </div>
+                                <div class="form-group">           
+                                    <input class="" type="checkbox" name="kitchen" value="1">
+                                    <label>Login As Kitchen</label>
                                 </div>
                                 
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" name="submit">sign in</button>

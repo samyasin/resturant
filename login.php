@@ -10,7 +10,8 @@ if(isset($_POST['submit'])){
     $result = mysqli_query($conn, $query);
     $row    = mysqli_fetch_assoc($result);
     if($row['rest_id']){
-    $_SESSION['rest_id'] = $row['rest_id'];     
+    $_SESSION['rest_id']      = $row['rest_id']; 
+    $_SESSION['table_number'] = $_POST['table_number'];    
     header("location:index.php");
     }else{
         $error = "Resturant Not Found";
@@ -44,6 +45,7 @@ if(isset($_POST['submit'])){
             ?>
                 <input type="text" placeholder="Email" name="email">
                 <input type="password" placeholder="Password" name="password">
+                <input type="number" placeholder="Table Number" name="table_number">
                 <input type="submit" value="Login" name="submit" class="btn btn-danger">                
             </form>
         </div>

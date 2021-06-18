@@ -170,7 +170,16 @@ if(!isset($_SESSION['admin_id'])){
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
-                    <ul class="list-unstyled navbar__list">                        
+                    <ul class="list-unstyled navbar__list">
+                        <?php if(isset($_SESSION['kitchen'])){ ?>
+                            <li>
+                            <a href="manage_kitchen_order.php">
+                                <i class="fas fa-chart-bar"></i>Manage Kitchen Orders</a>
+                        </li>
+                        <?php 
+                        }
+                        else{
+                        ?>                    
                         <?php if(isset($_SESSION['admin_type']) == 'admin'){ ?>
                         <li>
                             <a href="manage_admin.php">
@@ -198,7 +207,11 @@ if(!isset($_SESSION['admin_id'])){
                             <a href="manage_orders.php">
                                 <i class="fas fa-chart-bar"></i>Manage Orders</a>
                         </li>
-
+                         <li>
+                            <a href="done_orders.php">
+                                <i class="fas fa-chart-bar"></i>Done Orders</a>
+                        </li>
+                    <?php } ?>
                     </ul>
                 </nav>
             </div>
@@ -334,38 +347,20 @@ if(!isset($_SESSION['admin_id'])){
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
+                                            <a class="js-acc-btn" href="#">Logout</a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                                     </a>
                                                 </div>
-                                                <div class="content">
-                                                    <h5 class="name">
-                                                        <a href="#">john doe</a>
-                                                    </h5>
-                                                    <span class="email">johndoe@example.com</span>
-                                                </div>
+                                                
                                             </div>
                                             <div class="account-dropdown__body">
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-account"></i>Account</a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-settings"></i>Setting</a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                                </div>
+                                                
                                             </div>
                                             <div class="account-dropdown__footer">
                                                 <a href="logout.php">

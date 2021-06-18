@@ -12,9 +12,9 @@
   $item_id = $_GET['item_id'];
   $_SESSION['items'][$item_id]['qty'] = $qty;
   $_SESSION['items'][$item_id]['item_id'] = $item_id;  
-  echo '<pre>';
-  print_r($_SESSION);
-  die;
+  //echo '<pre>';
+  //print_r($_SESSION);
+  //die;
  }
  include('admin/includes/connection.php');
  include('includes/public_header.php');

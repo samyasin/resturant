@@ -30,14 +30,12 @@ include('includes/connection.php');
                             <th>Date</th>
                             <th>Table Number</th>
                             <th>Status</th>
-                            <th>View Order</th>
-                            <th>Verify Order</th>
-                            <th>Delete Order</th>
+                            <th>View Order</th>                            
                         </tr>
                     </thead>
                     <tbody>
                       <?php
-                      $query        = "select * from orders where rest_id = {$_SESSION['admin_id']} AND order_status NOT IN ('done')";
+                      $query        = "select * from orders where rest_id = {$_SESSION['admin_id']} AND order_status = 'done' ";
                       $result       = mysqli_query($conn,$query);
                       $i = 1;
                       while($row    = mysqli_fetch_assoc($result)){
@@ -48,8 +46,6 @@ include('includes/connection.php');
                         echo "<td>{$row['table_id']}</td>";
                         echo "<td>{$row['order_status']}</td>";
                         echo "<td><a href='view_order.php?order_id={$row['order_id']}' class='btn btn-warning'>View</a></td>";
-                        echo "<td><a href='verify_order.php?order_id={$row['order_id']}' class='btn btn-success'>Verify</a></td>";
-                        echo "<td><a href='delete_order.php?order_id={$row['order_id']}' class='btn btn-danger'>Delete</a></td>";
                         echo "</tr>";
                         $i++;
                     }
