@@ -76,7 +76,7 @@
                 <div class="col-md-9">
                     <div class="full">
                         <a class="logo" href="index.php"><img src="images/logo.png" alt="#" /></a>
-                        <a href="ask_for_help" class="btn btn-warning" style="margin:20px 0 0 25px; ">Ask For Help</a>
+                        <a href="ask_for_help.php" class="btn btn-warning" style="margin:20px 0 0 25px; ">Ask For Help</a>
                     </div>
                 </div>
                 <div class="col-md-3">
